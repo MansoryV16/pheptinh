@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải phương trình bậc nhất</title>
+</head>
+
+<body>
+   
+    <h3>Tính số ngày trong một tháng</h3>
+    <label for="thang">Nhập tháng:</label>
+    <input type="number" id="thang" min="1" max="12">
+    <br>
+    <label for="nam">Nhập năm:</label>
+    <input type="number" id="nam">
+    <br><br>
+    <button onclick="tinhSoNgay()">Tính số ngày</button>
+    <br><br>
+    <p id="ketQua"></p>
+
+    <script>
+        function tinhSoNgay() {
+            var thang = parseInt(document.getElementById("thang").value);
+            var nam = parseInt(document.getElementById("nam").value);
+            var soNgay;
+
+            if (thang == 2) {
+                if ((nam % 4 == 0 && nam % 100 != 0) || nam % 400 == 0) {
+                    soNgay = 29; // Năm nhuận
+                } else {
+                    soNgay = 28;
+                }
+            } else if (thang == 4 || thang == 6 || thang == 9 || thang == 11) {
+                soNgay = 30;
+            } else {
+                soNgay = 31;
+            }
+
+            document.getElementById("ketQua").innerHTML = "Số ngày trong tháng " + thang + " năm " + nam + " là: " + soNgay;
+        }
+    </script>
+
+
+    <h1>Phép toán cơ bản</h1>
+    <label for="a">Nhập số a:</label>
+    <input type="number" id="a">
+    <br>
+    <label for="b">Nhập số b:</label>
+    <input type="number" id="b">
+    <br><br>
+    <button onclick="thucHienPhepToan()">Thực hiện phép toán</button>
+    <br><br>
+    <p id="ketQua"></p>
+
+    <script>
+        function thucHienPhepToan() {
+            var a = parseFloat(document.getElementById("a").value);
+            var b = parseFloat(document.getElementById("b").value);
+
+            var tong = a + b;
+            var hieu = a - b;
+            var tich = a * b;
+            var thuong = b != 0 ? a / b : "Không chia được cho 0";
+
+            document.getElementById("ketQua").innerHTML = 
+                "Tổng: " + tong + "<br>" +
+                "Hiệu: " + hieu + "<br>" +
+                "Tích: " + tich + "<br>" +
+                "Thương: " + thuong;
+        }
+    </script>  
+   
+    <h2>Giải phương trình bậc nhất: ax + b = 0</h2>
+    <label for="a">Nhập số a:</label>
+    <input type="number" id="a">
+    <br>
+    <label for="b">Nhập số b:</label>
+    <input type="number" id="b">
+    <br><br>
+    <button onclick="giaiPhuongTrinh()">Giải phương trình</button>
+    <br><br>
+    <p id="ketQua"></p>
+
+    <script>
+
+
+        function giaiPhuongTrinh() {
+            var a = parseFloat(document.getElementById("a").value);
+            var b = parseFloat(document.getElementById("b").value);
+
+            if (a == 0) {
+                if (b == 0) {
+                    document.getElementById("ketQua").innerHTML = "Phương trình vô số nghiệm";
+                } else {
+                    document.getElementById("ketQua").innerHTML = "Phương trình vô nghiệm";
+                }
+            } else {
+                var x = -b / a;
+                document.getElementById("ketQua").innerHTML = "Nghiệm của phương trình: x = " + x;
+            }
+        }
+
+
+
+
+        
+    </script>
+</body>
+</html>
